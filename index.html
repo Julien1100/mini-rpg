@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini RPG</title>
+  
+  <!-- Ajout du CDN de Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title" id="characterName">Votre Nom de Personnage</h2>
+            <p>Niveau: <span id="characterLevel">1</span></p>
+            <p>Santé: <span id="characterHealth">100</span></p>
+            <p>Force: <span id="characterStrength">15</span></p>
+            <p>Points d'expérience: <span id="characterExperience">0</span></p>
+          </div>
+        </div>
+        <div class="card mt-4">
+          <div class="form-group mt-3">
+            <label for="newCharacterName">Nouveau Nom :</label>
+            <input type="text" class="form-control" id="newCharacterName">
+            <button class="btn btn-primary mt-2" onclick="changerNom()">Changer le Nom</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Inventaire</h2>
+            <ul class="list-group" id="inventoryList">
+              <!-- Le contenu de l'inventaire sera mis à jour dynamiquement ici -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Actions</h2>
+            <button class="btn btn-primary mr-2" onclick="attaquer()">Attaquer</button>
+            <button class="btn btn-warning mr-2" onclick="equiperArme()">Équiper une arme</button>
+            <button class="btn btn-info" onclick="equiperArmure()">Équiper une armure</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Journal de combat</h2>
+            <ul class="list-group" id="combatLog">
+              <!-- Le journal de combat sera mis à jour dynamiquement ici -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ajout du CDN de Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <!-- Ajout du fichier JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
