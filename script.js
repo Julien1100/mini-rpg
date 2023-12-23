@@ -31,7 +31,21 @@ function afficherInformationsPersonnage() {
 // Fonction pour attaquer
 function attaquer() {
   // Implémentez la logique d'attaque ici
-  console.log(personnage.nom + " attaque !");
+
+  if (personnage.inventaire.armeEquipee === null) {
+    console.log(`${personnage.nom} ne peut pas attaquer sans arme !`);
+  } else if (adversaire.pointDeVie >= 0) {
+    const degats = Math.floor(Math.random() * personnage.force) + 1;
+    console.log(
+      `${personnage.nom} attaque ${adversaire.nom} avec ${personnage.inventaire.armeEquipee} et lui inflige ${degats} points de dégats.`
+    );
+    adversaire.pointDeVie -= degats;
+    if (adversaire.pointDeVie <= 0) {
+      console.log(`${adversaire.nom} est mort !`);
+      console.log(`${personnage.nom} a gagné ce duel !`);
+    } else
+      console.log(`Il reste ${adversaire.pointDeVie} PV à ${adversaire.nom}.`);
+  }
 }
 
 // Fonction pour équiper une arme
