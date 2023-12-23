@@ -1,4 +1,3 @@
-
 // Données du personnage
 const personnage = {
   nom: "Votre Nom de Personnage",
@@ -8,8 +7,15 @@ const personnage = {
   experience: 0,
   inventaire: {
     armeEquipee: null,
-    armureEquipee: null
-  }
+    armureEquipee: null,
+  },
+};
+
+const adversaire = {
+  nom: "Grand méchant",
+  niveau: 1,
+  pointDeVie: 100,
+  force: 3,
 };
 
 // Fonction pour afficher les informations du personnage
@@ -18,7 +24,8 @@ function afficherInformationsPersonnage() {
   document.getElementById("characterLevel").innerText = personnage.niveau;
   document.getElementById("characterHealth").innerText = personnage.sante;
   document.getElementById("characterStrength").innerText = personnage.force;
-  document.getElementById("characterExperience").innerText = personnage.experience;
+  document.getElementById("characterExperience").innerText =
+    personnage.experience;
 }
 
 // Fonction pour attaquer
