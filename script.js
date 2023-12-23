@@ -18,6 +18,17 @@ const adversaire = {
   force: 3,
 };
 
+const armes = [
+  "Lame de l'Aube",
+  "Arc du Tir Étoilé",
+  "Marteau du Tonnerre",
+  "Sceptre des Abysses",
+];
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 // Fonction pour afficher les informations du personnage
 function afficherInformationsPersonnage() {
   document.getElementById("characterName").innerText = personnage.nom;
@@ -51,7 +62,10 @@ function attaquer() {
 // Fonction pour équiper une arme
 function equiperArme() {
   // Implémentez la logique d'équipement d'arme ici
-  console.log(personnage.nom + " équipe une arme !");
+
+  const arme = armes[getRandomInt(armes.length)];
+  personnage.inventaire.armeEquipee = arme;
+  console.log(`${personnage.nom} équipe ${arme}`);
 }
 
 // Fonction pour équiper une armure
