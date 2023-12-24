@@ -25,6 +25,25 @@ const armes = [
   "Sceptre des Abysses",
 ];
 
+const armures = [
+  {
+    nom: "Armure du Renfort",
+    bonus: 10,
+  },
+  {
+    nom: "Cotte de Protection",
+    bonus: 12,
+  },
+  {
+    nom: "Plastron Endurci",
+    bonus: 8,
+  },
+  {
+    nom: "Harnois de la Régénération",
+    bonus: 15,
+  },
+];
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -71,7 +90,17 @@ function equiperArme() {
 // Fonction pour équiper une armure
 function equiperArmure() {
   // Implémentez la logique d'équipement d'armure ici
-  console.log(personnage.nom + " équipe une armure !");
+
+  const armure = armures[getRandomInt(armures.length)];
+  if (personnage.inventaire.armureEquipee !== null) {
+    console.log(`${personnage.nom} a déjà une armure.`);
+  } else {
+    personnage.inventaire.armureEquipee = armure.nom;
+    personnage.sante += armure.bonus;
+    console.log(`${personnage.nom} a trouvé l'armure ${armure.nom}.`);
+    console.log(`${personnage.nom} gagne ${armure.bonus} PV !`);
+    console.log(`${personnage.nom} a maintenant ${personnage.sante} PV.`);
+  }
 }
 
 // Fonction pour changer le nom du personnage
