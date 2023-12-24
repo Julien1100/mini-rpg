@@ -45,9 +45,14 @@ const armures = [
 ];
 
 const inventoryList = document.getElementById("inventoryList");
+const combatLog = document.getElementById("combatLog");
 
 function addToInventory(element) {
   inventoryList.innerHTML += `<li>${element}</li>`;
+}
+
+function addToCombatLog(string) {
+  combatLog.innerHTML += `<li>${string}</li>`;
 }
 
 function getRandomInt(max) {
@@ -69,18 +74,20 @@ function attaquer() {
   // Implémentez la logique d'attaque ici
 
   if (personnage.inventaire.armeEquipee === null) {
-    console.log(`${personnage.nom} ne peut pas attaquer sans arme !`);
+    addToCombatLog(`${personnage.nom} ne peut pas attaquer sans arme !`);
   } else if (adversaire.pointDeVie >= 0) {
     const degats = Math.floor(Math.random() * personnage.force) + 1;
-    console.log(
+    addToCombatLog(
       `${personnage.nom} attaque ${adversaire.nom} avec ${personnage.inventaire.armeEquipee} et lui inflige ${degats} points de dégats.`
     );
     adversaire.pointDeVie -= degats;
     if (adversaire.pointDeVie <= 0) {
-      console.log(`${adversaire.nom} est mort !`);
-      console.log(`${personnage.nom} a gagné ce duel !`);
+      addToCombatLog(`${adversaire.nom} est mort !`);
+      addToCombatLog(`${personnage.nom} a gagné ce duel !`);
     } else
-      console.log(`Il reste ${adversaire.pointDeVie} PV à ${adversaire.nom}.`);
+      addToCombatLog(
+        `Il reste ${adversaire.pointDeVie} PV à ${adversaire.nom}.`
+      );
   }
 }
 
@@ -92,9 +99,9 @@ function equiperArme() {
   if (personnage.inventaire.armeEquipee === null) {
     personnage.inventaire.armeEquipee = arme;
     addToInventory(arme);
-    console.log(`${personnage.nom} équipe ${arme}`);
+    addToCombatLog(`${personnage.nom} équipe ${arme}`);
   } else {
-    console.log(`${personnage.nom} a déjà une arme`);
+    addToCombatLog(`${personnage.nom} a déjà une arme`);
   }
 }
 
@@ -104,14 +111,14 @@ function equiperArmure() {
 
   const armure = armures[getRandomInt(armures.length)];
   if (personnage.inventaire.armureEquipee !== null) {
-    console.log(`${personnage.nom} a déjà une armure.`);
+    addToCombatLog(`${personnage.nom} a déjà une armure.`);
   } else {
     personnage.inventaire.armureEquipee = armure.nom;
     addToInventory(armure.nom);
     personnage.sante += armure.bonus;
-    console.log(`${personnage.nom} a trouvé l'armure ${armure.nom}.`);
-    console.log(`${personnage.nom} gagne ${armure.bonus} PV !`);
-    console.log(`${personnage.nom} a maintenant ${personnage.sante} PV.`);
+    addToCombatLog(`${personnage.nom} a trouvé l'armure ${armure.nom}.`);
+    addToCombatLog(`${personnage.nom} gagne ${armure.bonus} PV !`);
+    addToCombatLog(`${personnage.nom} a maintenant ${personnage.sante} PV.`);
   }
 }
 
