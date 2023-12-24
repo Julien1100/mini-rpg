@@ -44,6 +44,12 @@ const armures = [
   },
 ];
 
+const inventoryList = document.getElementById("inventoryList");
+
+function addToInventory(element) {
+  inventoryList.innerHTML += `<li>${element}</li>`;
+}
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -83,8 +89,13 @@ function equiperArme() {
   // Implémentez la logique d'équipement d'arme ici
 
   const arme = armes[getRandomInt(armes.length)];
-  personnage.inventaire.armeEquipee = arme;
-  console.log(`${personnage.nom} équipe ${arme}`);
+  if (personnage.inventaire.armeEquipee === null) {
+    personnage.inventaire.armeEquipee = arme;
+    addToInventory(arme);
+    console.log(`${personnage.nom} équipe ${arme}`);
+  } else {
+    console.log(`${personnage.nom} a déjà une arme`);
+  }
 }
 
 // Fonction pour équiper une armure
@@ -96,6 +107,7 @@ function equiperArmure() {
     console.log(`${personnage.nom} a déjà une armure.`);
   } else {
     personnage.inventaire.armureEquipee = armure.nom;
+    addToInventory(armure.nom);
     personnage.sante += armure.bonus;
     console.log(`${personnage.nom} a trouvé l'armure ${armure.nom}.`);
     console.log(`${personnage.nom} gagne ${armure.bonus} PV !`);
